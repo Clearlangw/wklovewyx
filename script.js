@@ -7,6 +7,37 @@ let fishingGame = null;
 // 初始化应用
 document.addEventListener('DOMContentLoaded', function() {
     initializeApp();
+    // 禁止开发者工具与查看源代码的简单拦截与提示
+    try {
+        document.addEventListener('keydown', function(e) {
+            if ((e.ctrlKey && e.shiftKey && (e.key === 'I' || e.key === 'i' || e.key === 'J' || e.key === 'j')) ||
+                (e.ctrlKey && (e.key === 'U' || e.key === 'u')) ||
+                (e.key === 'F12')) {
+                e.preventDefault();
+                alert('不好意思这里有彩蛋，请不要剧透，麻烦告诉王怡萱，我很爱她');
+                return false;
+            }
+        }, true);
+        document.addEventListener('contextmenu', function(e){
+            e.preventDefault();
+            alert('不好意思这里有彩蛋，请不要剧透，麻烦告诉王怡萱，我很爱她');
+            return false;
+        }, true);
+        // 控制台打开检测（基础版）
+        let devtoolsOpen = false;
+        const threshold = 160;
+        setInterval(function(){
+            const widthThreshold = window.outerWidth - window.innerWidth > threshold;
+            const heightThreshold = window.outerHeight - window.innerHeight > threshold;
+            const opened = widthThreshold || heightThreshold;
+            if (opened && !devtoolsOpen){
+                devtoolsOpen = true;
+                alert('不好意思这里有彩蛋，请不要剧透，麻烦告诉王怡萱，我很爱她');
+            } else if (!opened && devtoolsOpen){
+                devtoolsOpen = false;
+            }
+        }, 1000);
+    } catch (_) {}
 });
 
 function initializeApp() {

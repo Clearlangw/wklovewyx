@@ -270,7 +270,11 @@
             {src: 'assets/玉桂狗.jpg', title: '玉桂狗'},
             {src: 'assets/鲤鱼.png', title: '鲤鱼'},
             {src: 'assets/鱿鱼.png', title: '鱿鱼'},
-            {src: 'assets/传说之鱼.png', title: '传说之鱼'}
+            {src: 'assets/传说之鱼.png', title: '传说之鱼'},
+            {src: 'assets/深海囚徒.png', title: '深海囚徒（不知道为什么被关在海底的危险生物）'},
+            {src: 'assets/可爱花生.png', title: '可爱花生（喵~）'},
+            {src: 'assets/闪电侠.png', title: '闪电侠（神速力的传承者）'},
+            {src: 'assets/肥猪.png', title: '肥猪（那一天的胖猫跳进大海）'}
         ];
         const bouquetChance = 0.1;
         if (Math.random() < bouquetChance) {
