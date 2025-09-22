@@ -1,0 +1,611 @@
+/* 基础样式重置 */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* 像素字体 */
+body {
+    font-family: 'Press Start 2P', monospace;
+    font-size: 12px;
+    line-height: 1.6;
+    overflow-x: hidden;
+    background: #87CEEB;
+    min-height: 100vh;
+}
+
+/* 背景层 */
+.background-layer {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('assets/siWMIeo7t5qL.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    z-index: -1;
+    filter: brightness(0.8);
+}
+
+/* 主要内容区域 */
+.main-content {
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+
+/* 邀请函样式 */
+.invitation-letter {
+    position: relative;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+    z-index: 10;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.invitation-letter:hover {
+    /* 取消靠近时的泛白/变亮动画与缩放 */
+    transform: none;
+}
+
+.letter-image {
+    max-width: 100%;
+    height: auto;
+    image-rendering: pixelated;
+    border-radius: 10px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+}
+
+.letter-header {
+    text-align: center;
+    font-size: 16px;
+    color: #8B4513;
+    margin-bottom: 20px;
+    text-shadow: 2px 2px 0px #DDD;
+}
+
+.letter-content {
+    color: #2F4F4F;
+    margin-bottom: 20px;
+    line-height: 2;
+}
+
+.letter-content p {
+    margin-bottom: 15px;
+}
+
+.click-hint {
+    color: #FF6347 !important;
+    font-size: 10px;
+    animation: blink 2s infinite;
+}
+
+@keyframes blink {
+    0%, 50% { opacity: 1; }
+    51%, 100% { opacity: 0.5; }
+}
+
+.letter-signature {
+    text-align: right;
+    color: #8B4513;
+    font-size: 10px;
+}
+
+/* NPC样式 */
+.npc-container {
+    position: absolute;
+    bottom: 50px;
+    right: 50px;
+    display: flex;
+    gap: 20px;
+    z-index: 10;
+}
+
+.npc-slot {
+    width: 80px;
+    height: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 2px solid #8B4513;
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 8px;
+}
+
+.npc-image {
+    width: 70px;
+    height: 70px;
+    image-rendering: pixelated;
+    object-fit: cover;
+    border-radius: 4px;
+}
+
+.flower-slot {
+    background: rgba(245, 245, 220, 0.8);
+    border-style: dashed;
+    opacity: 0.7;
+}
+
+.flower-slot.show-bouquet {
+    opacity: 1;
+    background: rgba(255, 255, 255, 0.95);
+    border-style: solid;
+}
+
+.bouquet-image {
+    width: 60px;
+    height: 60px;
+    image-rendering: pixelated;
+    animation: bouquet-appear 1s ease-out;
+}
+
+@keyframes bouquet-appear {
+    0% {
+        opacity: 0;
+        transform: scale(0.5) rotate(-10deg);
+    }
+    50% {
+        transform: scale(1.1) rotate(5deg);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1) rotate(0deg);
+    }
+}
+
+/* 隐藏类 */
+.hidden {
+    display: none !important;
+}
+
+/* 惊喜掉落区域 */
+.falling-area {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 1000;
+}
+
+.falling-emoji {
+    position: absolute;
+    font-size: 24px;
+    animation: fall 3s linear forwards;
+    pointer-events: none;
+}
+
+@keyframes fall {
+    0% {
+        transform: translateY(-50px) rotate(0deg);
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(100vh) rotate(360deg);
+        opacity: 0;
+    }
+}
+
+/* 钓鱼游戏样式 */
+.fishing-game {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 2000;
+}
+
+.fishing-container {
+    background: #F5F5DC;
+    border: 4px solid #8B4513;
+    padding: 0;
+    border-radius: 0;
+    box-shadow: 8px 8px 0px #654321;
+    position: relative;
+    width: 23.9vh;
+    height: 80vh;
+}
+
+.fishing-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: absolute;
+    top: -40px;
+    left: 0;
+    width: 100%;
+}
+
+.fishing-header h3 {
+    color: #8B4513;
+    font-size: 14px;
+}
+
+.close-btn {
+    background: #FF6347;
+    color: white;
+    border: 2px solid #8B4513;
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+    font-family: 'Press Start 2P', monospace;
+    font-size: 16px;
+}
+
+.close-btn:hover {
+    background: #FF4500;
+}
+
+/* 兼容 fishing.html 结构的元素样式 */
+/* 还原与原版类似的尺寸，确保两者叠加显示 */
+#frame{
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    z-index: 2;
+}
+
+#frame_bak{
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    z-index: 1;
+}
+
+#float_cv{
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    z-index: 3;
+}
+
+#process_cv{
+    position: absolute;
+    top: 0;
+    left: 31.38%;
+    height: 91.25%;
+    width: 8.37%;
+    z-index: 4;
+}
+
+.fishing-controls {
+    margin-top: 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.fishing-info {
+    color: #8B4513;
+    font-size: 10px;
+}
+
+/* 隐藏彩蛋输入区域 */
+.secret-input {
+    position: fixed;
+    bottom: 20px;
+    left: 20px;
+    background: #F5F5DC;
+    border: 3px solid #8B4513;
+    padding: 15px;
+    border-radius: 0;
+    box-shadow: 4px 4px 0px #654321;
+    z-index: 1500;
+}
+
+.input-title {
+    color: #8B4513;
+    font-size: 10px;
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+.emoji-buttons {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 5px;
+    margin-bottom: 10px;
+}
+
+.emoji-btn {
+    width: 30px;
+    height: 30px;
+    border: 2px solid #8B4513;
+    background: white;
+    cursor: pointer;
+    font-size: 14px;
+    transition: transform 0.1s;
+}
+
+.emoji-btn:hover {
+    transform: scale(1.1);
+    background: #FFE4B5;
+}
+
+.emoji-btn:active {
+    transform: scale(0.9);
+}
+
+.input-display {
+    background: white;
+    border: 2px solid #8B4513;
+    padding: 8px;
+    min-height: 30px;
+    margin-bottom: 10px;
+    font-size: 10px;
+    color: #8B4513;
+}
+
+/* 像素按钮样式 */
+.pixel-btn {
+    background: #32CD32;
+    color: white;
+    border: 2px solid #8B4513;
+    padding: 8px 15px;
+    cursor: pointer;
+    font-family: 'Press Start 2P', monospace;
+    font-size: 10px;
+    transition: background 0.2s;
+}
+
+.pixel-btn:hover {
+    background: #228B22;
+}
+
+.pixel-btn:active {
+    transform: translateY(2px);
+}
+
+/* 钓鱼触发按钮 */
+.fishing-trigger {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    width: 50px;
+    height: 50px;
+    border: 3px solid #8B4513;
+    background: #87CEEB;
+    cursor: pointer;
+    font-size: 24px;
+    border-radius: 0;
+    box-shadow: 4px 4px 0px #654321;
+    transition: transform 0.2s;
+    z-index: 1500;
+}
+
+.fishing-trigger:hover {
+    transform: scale(1.1);
+}
+
+.fishing-trigger:active {
+    transform: scale(0.9);
+}
+
+/* 特殊文字掉落区域 */
+.special-text-area {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 1500;
+}
+
+.falling-text {
+    position: absolute;
+    font-size: 24px;
+    color: #2F2F2F;
+    font-weight: bold;
+    text-shadow: 2px 2px 0px white;
+    animation: fallText 4s linear forwards;
+    pointer-events: none;
+}
+
+@keyframes fallText {
+    0% {
+        transform: translateY(-50px);
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(100vh);
+        opacity: 0;
+    }
+}
+
+/* 响应式设计 */
+@media (max-width: 768px) {
+    .invitation-letter {
+        padding: 20px;
+        font-size: 10px;
+    }
+    
+    .letter-header {
+        font-size: 14px;
+    }
+    
+    .npc-image {
+        width: 60px;
+        height: 60px;
+    }
+    
+    .female-npc, .male-npc {
+        right: 20px;
+        bottom: 20px;
+    }
+    
+    .male-npc {
+        left: 20px;
+        right: auto;
+    }
+    
+    .fishing-container {
+        padding: 15px;
+        margin: 20px;
+    }
+    
+    #fishing-canvas {
+        width: 300px;
+        height: 225px;
+    }
+    
+    .secret-input {
+        bottom: 10px;
+        left: 10px;
+        padding: 10px;
+    }
+    
+    .emoji-buttons {
+        grid-template-columns: repeat(5, 1fr);
+        gap: 3px;
+    }
+    
+    .emoji-btn {
+        width: 25px;
+        height: 25px;
+        font-size: 12px;
+    }
+}
+
+@media (max-width: 480px) {
+    body {
+        font-size: 10px;
+    }
+    
+    .invitation-letter {
+        padding: 15px;
+        font-size: 8px;
+    }
+    
+    .letter-header {
+        font-size: 12px;
+    }
+    
+    .npc-image {
+        width: 50px;
+        height: 50px;
+    }
+    
+    #fishing-canvas {
+        width: 250px;
+        height: 187px;
+    }
+    
+    .fishing-trigger {
+        width: 40px;
+        height: 40px;
+        font-size: 20px;
+    }
+}
+
+
+/* 新的隐藏彩蛋输入区域 */
+.secret-input-area {
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(44, 24, 16, 0.9);
+    border: 2px solid #8B4513;
+    border-radius: 10px;
+    padding: 15px;
+    z-index: 100;
+}
+
+.emoji-buttons {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 10px;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.emoji-btn, .clear-btn {
+    background: #4A4A4A;
+    border: 2px solid #666;
+    border-radius: 5px;
+    width: 40px;
+    height: 40px;
+    font-size: 20px;
+    cursor: pointer;
+    transition: all 0.2s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    filter: none !important; /* 确保不受任何滤镜影响 */
+}
+
+.emoji-btn:hover, .clear-btn:hover {
+    background: #666;
+    border-color: #888;
+    transform: scale(1.1);
+    filter: none !important; /* 确保hover状态也不受滤镜影响 */
+}
+
+.dog-icon {
+    width: 24px;
+    height: 24px;
+    image-rendering: pixelated;
+}
+
+.secret-display {
+    background: #2C1810;
+    border: 1px solid #8B4513;
+    border-radius: 5px;
+    padding: 8px;
+    color: #FFF;
+    font-family: "Press Start 2P", monospace;
+    font-size: 12px;
+    text-align: center;
+    min-height: 20px;
+    min-width: 100px;
+}
+
+/* 掉落触发按钮 */
+.drop-trigger-btn {
+    position: absolute;
+    top: 50%;
+    right: 50px;
+    transform: translateY(-50%);
+    background: linear-gradient(45deg, #FF69B4, #FFB6C1);
+    border: 3px solid #FF1493;
+    border-radius: 15px;
+    padding: 15px 25px;
+    font-size: 18px;
+    font-family: "Press Start 2P", monospace;
+    color: #FFF;
+    cursor: pointer;
+    transition: all 0.3s;
+    box-shadow: 0 4px 8px rgba(255, 20, 147, 0.3);
+    animation: pulse 2s infinite;
+}
+
+.drop-trigger-btn:hover {
+    transform: translateY(-50%) scale(1.1);
+    box-shadow: 0 6px 12px rgba(255, 20, 147, 0.5);
+}
+
+@keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.7; }
+}
+

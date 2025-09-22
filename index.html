@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>星露谷物语约会邀请</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- 背景层 -->
+    <div class="background-layer"></div>
+    
+    <!-- 主要内容 -->
+    <div class="main-content">
+        <!-- 邀请函主体 -->
+        <div class="invitation-letter" id="invitation-letter">
+            <img src="assets/invitation-letter.png" alt="约会邀请函" class="letter-image">
+        </div>
+        
+        <!-- NPC区域 -->
+        <div class="npc-container">
+            <!-- 艾利欧特（男性NPC） -->
+            <div class="npc-slot male-npc">
+                <img src="assets/elliott-portrait.png" alt="艾利欧特" class="npc-image">
+            </div>
+            
+            <!-- 空白格子（用于显示花束） -->
+            <div class="npc-slot flower-slot" id="flower-slot">
+                <!-- 花束将在隐藏彩蛋触发时显示 -->
+            </div>
+            
+            <!-- 白雪公主（女性NPC） -->
+            <div class="npc-slot female-npc">
+                <img src="assets/白雪公主.png" alt="白雪公主" class="npc-image">
+            </div>
+        </div>
+    </div>
+    
+    <!-- 惊喜掉落区域 -->
+    <div class="falling-area" id="falling-area"></div>
+    
+    <!-- 钓鱼游戏区域 -->
+    <div class="fishing-game hidden" id="fishing-game">
+        <div class="fishing-container">
+            <div class="fishing-header">
+                <h3>钓鱼（迫真）</h3>
+                <button id="close-fishing" class="close-btn">×</button>
+            </div>
+            <!-- 引入与 fishing.html 一致的结构 -->
+            <img id="frame" src="Stardew-Valley-Fishing-Time--main/pure html/static/img/frame.png" alt="">
+            <canvas id="float_cv"></canvas>
+            <canvas id="process_cv"></canvas>
+            <img id="float" hidden src="Stardew-Valley-Fishing-Time--main/pure html/static/img/float.png" alt=""/>
+            <img id="fish" hidden src="Stardew-Valley-Fishing-Time--main/pure html/static/img/fish.png" alt=""/>
+            <img id="frame_bak" src="Stardew-Valley-Fishing-Time--main/pure html/static/img/frame_bak.png" alt=""/>
+        </div>
+    </div>
+    
+    <!-- 隐藏彩蛋输入区域 -->
+    <div class="secret-input-area">
+        <div class="emoji-buttons">
+            <button class="emoji-btn" data-value="0">🐱</button>
+            <button class="emoji-btn" data-value="1">❤️</button>
+            <button class="emoji-btn" data-value="2">💙</button>
+            <button class="emoji-btn" data-value="3">💚</button>
+            <button class="emoji-btn" data-value="4">💖</button>
+            <button class="emoji-btn" data-value="5">💛</button>
+            <button class="emoji-btn" data-value="6">🧡</button>
+            <button class="emoji-btn" data-value="7">💜</button>
+            <button class="emoji-btn" data-value="8">🖤</button>
+            <button class="emoji-btn" data-value="9">🤍</button>
+            <button class="clear-btn" id="clear-input">
+                <img src="assets/pixel_penguin.png" alt="Clear" class="dog-icon">
+            </button>
+        </div>
+        <div class="secret-display" id="secret-display"></div>
+    </div>
+    
+    <!-- 钓鱼按钮 -->
+    <button class="fishing-trigger" id="fishing-trigger" title="开始钓鱼">🎣</button>
+    
+    <!-- 特殊文字掉落区域 -->
+    <div class="special-text-area" id="special-text-area"></div>
+
+    <script src="script.js"></script>
+    <script src="pixel-effects.js"></script>
+    <script src="fishing-modal.js"></script>
+</body>
+</html>
+
