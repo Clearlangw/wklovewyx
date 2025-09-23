@@ -304,7 +304,7 @@ document.addEventListener('DOMContentLoaded', function() {
     if (invitationLetter) {
         invitationLetter.addEventListener('click', function(e) {
             window.pixelEffects.createSpecialEffect(e.clientX, e.clientY, 'heart', 15);
-            window.pixelEffects.screenShake(300);
+            // 取消全屏震动效果
         });
         
         // 取消靠近邀请函时的泛白动画

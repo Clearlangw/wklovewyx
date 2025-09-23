@@ -330,15 +330,21 @@ function showSpecialMessage() {
     
     const closeButton = document.createElement('button');
     closeButton.textContent = '确定';
-    closeButton.style.marginTop = '20px';
-    closeButton.style.padding = '10px 20px';
+    closeButton.style.marginTop = '28px';
+    closeButton.style.padding = '12px 24px';
     closeButton.style.fontSize = '16px';
     closeButton.style.fontFamily = '"Press Start 2P", monospace';
     closeButton.style.background = '#8B4513';
     closeButton.style.color = 'white';
     closeButton.style.border = 'none';
-    closeButton.style.borderRadius = '5px';
+    closeButton.style.borderRadius = '8px';
     closeButton.style.cursor = 'pointer';
+    // 改为中下部居中
+    closeButton.style.position = 'relative';
+    closeButton.style.display = 'block';
+    closeButton.style.marginLeft = 'auto';
+    closeButton.style.marginRight = 'auto';
+    closeButton.style.transform = 'translateY(10px)';
     
     closeButton.addEventListener('click', () => {
         document.body.removeChild(modal);
