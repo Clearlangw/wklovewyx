@@ -280,10 +280,12 @@ body {
 
 #process_cv{
     position: absolute;
-    top: 0;
-    left: 31.38%;
-    height: 91.25%;
-    width: 8.37%;
+    /* 将进度条移动到右侧深色窄槽并对齐 */
+    top: 4.5%;
+    left: auto;
+    right: calc(6.2% + 7.5%); /* 向左移动自身宽度，完全进入空槽 */
+    height: 90.5%;
+    width: 7.5%;
     z-index: 4;
 }
 

@@ -68,7 +68,8 @@
         fcw = floatCanvas.width;
         fch = floatCanvas.height;
 
-        const frame_bottom_y = fch*0.78;
+        // 蓝色槽上下边界（根据底图留白校准）
+        const frame_bottom_y = fch*0.95; // 下界下移，让浮标可接近底部
         const frame_top_y = fch*0.05;
 
         fishImg = document.getElementById('fish');
@@ -88,7 +89,17 @@
                 this.lttpy += dt*(this.aimpy - this.lttpy) + Math.random();
                 if(parseInt(this.time_counter)%60 === 0){
                     let r = Math.random();
-                    this.aimpy = fch * r;
+                    // 目标值限制在蓝色槽范围内，考虑鱼高度不出界
+                    const minAim = frame_top_y;
+                    const maxAim = frame_bottom_y - this.height;
+                    this.aimpy = Math.min(Math.max(fch * r, minAim), maxAim);
+                }
+                // 实时钳制鱼位置不出蓝色槽
+                if(this.lttpy < frame_top_y){
+                    this.lttpy = frame_top_y;
+                }
+                if(this.lttpy + this.height > frame_bottom_y){
+                    this.lttpy = frame_bottom_y - this.height;
                 }
             },
             draw:function(){
@@ -109,18 +120,18 @@
             velocityMax: 10,
             img: floatImg,
             update:function(dt){
+                // 物理更新
+                this.velocity += gravity * dt;
+                this.lttpy += this.velocity * dt;
+                // 出界处理：限制浮标不越过蓝色槽，并带反弹损失
                 if(this.lttpy < frame_top_y){
                     this.lttpy = frame_top_y;
                     this.velocity *= -collisionLoss;
-                    return;
                 }
-                if(this.lttpy > frame_bottom_y){
-                    this.lttpy = frame_bottom_y;
+                if(this.lttpy + this.height > frame_bottom_y){
+                    this.lttpy = frame_bottom_y - this.height;
                     this.velocity *= -collisionLoss;
-                    return;
                 }
-                this.velocity += gravity * dt;
-                this.lttpy += this.velocity * dt;
             },
             draw:function(){
                 this.ctx.drawImage(this.img, this.lttpx, this.lttpy, this.width, this.height);
@@ -274,7 +285,8 @@
             {src: 'assets/深海囚徒.png', title: '深海囚徒（不知道为什么被关在海底的危险生物）'},
             {src: 'assets/可爱花生.png', title: '可爱花生（喵~）'},
             {src: 'assets/闪电侠.png', title: '闪电侠（神速力的传承者）'},
-            {src: 'assets/肥猪.png', title: '肥猪（那一天的胖猫跳进大海）'}
+            {src: 'assets/肥猪.png', title: '肥猪（那一天的胖猫跳进大海）'},
+            {src: 'assets/奶龙xx.jpeg', title: '黄桃罐头（这肯定不是奶龙xx）'},
         ];
         const bouquetChance = 0.1;
         if (Math.random() < bouquetChance) {
